@@ -7,10 +7,7 @@ class MemoEditScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.memoEditInput}>
-          <TextInput style={styles.memoEditInput} multiline value="hi"/>
-        </View>
-
+        <TextInput style={styles.memoEditInput} multiline value="hi"/>
         <CircleButton>
         {'\uf00c'}
         </CircleButton>
@@ -31,6 +28,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
+    fontSize: 16,
   },
 });
 
