@@ -12,6 +12,12 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import StackNavigator from 'react-navigation/src/navigators/StackNavigator';
 
 const App = StackNavigator({
+  Login: {
+    screen: LoginScreen,
+  },
+  SignUp: {
+    screen: SignUpScreen,
+  },
   Home: { 
     screen: MemoListScreen,
   },
@@ -21,15 +27,11 @@ const App = StackNavigator({
   MemoEdit: {
     screen: MemoEditScreen,
   },
-  Login: {
-    screen: LoginScreen,
-  },
-  SignUp: {
-    screen: SignUpScreen,
-  },
 }, {
   navigationOptions: {
     headerTitle: 'MEMOT',
+    headerTintColor: '#fff',
+    headerBackTitle: null,
     headerStyle: {
       backgroundColor: '#265366',
     },

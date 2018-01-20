@@ -10,7 +10,7 @@ class MemoListScreen extends React.Component {
       <View style={styles.container}>
         <MemoList navigation={this.props.navigation} />
         
-        <CircleButton onPress={() => {this.props.navigation.navigate('MemoEdit')}}>
+        <CircleButton onPress={() => {this.props.navigation.navigate('MemoEdit');}}>
           {'\uf067'}
         </CircleButton>
       </View>
