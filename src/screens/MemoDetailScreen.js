@@ -15,6 +15,10 @@ class MemoDetailScreen extends React.Component {
     this.setState({memo: params.memo});
   }
 
+  returnMemo(memo) {
+    this.setState({memo: memo})
+  }
+
   dateString(date) {
     const str = date.toISOString();
     return str.split('T')[0];
@@ -41,7 +45,7 @@ class MemoDetailScreen extends React.Component {
         </View>
 
         <CircleButton color='white' style={styles.editButton}
-          onPress={() => {this.props.navigation.navigate('MemoEdit', {memo: memo})}}>
+          onPress={() => {this.props.navigation.navigate('MemoEdit', {memo: memo, returnMemo: this.returnMemo.bind(this)})}}>
           {'\uf040'}
         </CircleButton>
       </View>
