@@ -33,12 +33,14 @@ class SignUpScreen extends React.Component {
         <TextInput style={styles.input}
           value={this.state.email}
           onChangeText={(text) => {this.setState({email: text})}}
+          underlineColorAndroid="transparent"
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="Email Address" />
         <TextInput style={styles.input}
           value={this.state.password}
           onChangeText={(text) => {this.setState({password: text})}}
+          underlineColorAndroid="transparent"
           autoCorrect={false}
           autoCapitalize="none"
           secureTextEntry={true}

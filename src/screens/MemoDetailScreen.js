@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   editButton: {
-    top: 75,
+    top: 68,
   },
   memoBody: {
     fontSize: 22,

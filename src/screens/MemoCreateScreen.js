@@ -27,6 +27,7 @@ class MemoCreateScreen extends React.Component {
       <View style={styles.container}>
         <TextInput style={styles.memoEditInput}
           multiline
+          textAlignVertical='top'
           value={this.state.body}
           onChangeText={(text) => {this.setState({body: text})}}
           autoCorrect={false} />

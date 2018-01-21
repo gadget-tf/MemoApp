@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import { StackNavitator } from 'react-navigation';
 import firebase from 'firebase';
 
@@ -52,6 +52,10 @@ const App = StackNavigator({
     headerBackTitle: null,
     headerStyle: {
       backgroundColor: '#265366',
+      shadowColor: '#000',
+      shadowOffset: {width: 0, height: 0},
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
     },
     headerTitleStyle: {
       color: '#fff',
