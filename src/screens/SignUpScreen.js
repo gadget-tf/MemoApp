@@ -13,7 +13,13 @@ class SignUpScreen extends React.Component {
   handleSubmit() {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
-        this.props.navigation.navigate('Home');
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: 'Home'})
+          ]
+        })
+        this.props.navigation.dispatch(resetAction);
       }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;

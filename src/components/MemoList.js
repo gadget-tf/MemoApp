@@ -10,7 +10,7 @@ class MemoList extends React.Component {
             'MemoDetail', {memo: item});
           }}>
         <View style={styles.memolistItem}>
-          <Text style={styles.memoTitle}>{item.body}</Text>
+          <Text style={styles.memoTitle}>{item.body.substring(0, 10)}</Text>
           <Text style={styles.memoDate}>{
               moment(item.createdOn).tz('Asia/Tokyo').format('YYYY年MM月DD日')
             }

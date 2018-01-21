@@ -17,9 +17,9 @@ class MemoCreateScreen extends React.Component {
       body: this.state.body,
       createdOn: new Date(),
     }).then((docRef) => {
+      this.props.navigation.goBack();
     }).catch((error) => {
     });
-    this.props.navigation.goBack();
   }
 
   render() {
