@@ -1,15 +1,43 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
+import firebase from 'firebase';
 
 import CircleButton from '../elements/CircleButton';
 
 class MemoEditScreen extends React.Component {
+  state = {
+    body: '',
+    key: '',
+  }
+
+  componentWillMount() {
+    const {params} = this.props.navigation.state;
+    this.setState({body: params.memo.body});
+    this.setState({key: params.memo.key});
+  }
+
+  handleSubmit() {
+    const db = firebase.firestore();
+    const {currentUser} = firebase.auth();
+    const uid = currentUser.uid;
+    db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key).update({
+      body: this.state.body,
+      createdOn: new Date(),
+    }).then((docRef) => {
+    }).catch((error) => {
+    });
+    this.props.navigation.goBack();
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.memoEditInput} multiline value="hi"/>
-        <CircleButton onPress={() => {this.props.navigation.goBack();}}>
-        {'\uf00c'}
+        <TextInput style={styles.memoEditInput}
+          multiline
+          value={this.state.body}
+          onChangeText={(text) => {this.setState({body: text})}} />
+        <CircleButton onPress={this.handleSubmit.bind(this)}>
+          {'\uf00c'}
         </CircleButton>
       </View>
     );
@@ -22,7 +50,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   memoEditInput: {
-    backgroundColor: '#ddd',
+    backgroundColor: '#fff',
     flex: 1,
     paddingTop: 32,
     paddingLeft: 16,

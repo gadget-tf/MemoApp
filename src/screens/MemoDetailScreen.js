@@ -3,24 +3,45 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import CircleButton from '../elements/CircleButton';
 
+import moment from 'moment-timezone';
+
 class MemoDetailScreen extends React.Component {
+  state = {
+    memo: {},
+  }
+
+  componentWillMount() {
+    const {params} = this.props.navigation.state;
+    this.setState({memo: params.memo});
+  }
+
+  dateString(date) {
+    const str = date.toISOString();
+    return str.split('T')[0];
+  }
+
   render() {
+    const {memo} = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.memoHeader}>
           <View>
-            <Text style={styles.memoHeaderTitle}>講座のアイデア</Text>
-            <Text style={styles.memoHeaderDate}>2017/12/12</Text>
+            <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 10)}</Text>
+            <Text style={styles.memoHeaderDate}>{
+                moment(memo.createdOn).tz('Asia/Tokyo').format('YYYY年MM月DD日')
+              }
+            </Text>
           </View>
         </View>
 
         <View style={styles.memoContents}>
-          <Text>
-            講座のアイデア
+          <Text style={styles.memoBody}>
+            {memo.body}
           </Text>
         </View>
 
-        <CircleButton color='white' style={styles.editButton} onPress={() => {this.props.navigation.navigate('MemoEdit');}}>
+        <CircleButton color='white' style={styles.editButton}
+          onPress={() => {this.props.navigation.navigate('MemoEdit', {memo: memo})}}>
           {'\uf040'}
         </CircleButton>
       </View>
@@ -59,6 +80,10 @@ const styles = StyleSheet.create({
   },
   editButton: {
     top: 75,
+  },
+  memoBody: {
+    fontSize: 22,
+    lineHeight: 22,
   },
 });
 

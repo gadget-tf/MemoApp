@@ -1,13 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
+import moment from 'moment-timezone';
 
 class MemoList extends React.Component {
   renderMemo({item}) {
     return (
-      <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail')}}>
+      <TouchableHighlight onPress={() => {
+          this.props.navigation.navigate(
+            'MemoDetail', {memo: item});
+          }}>
         <View style={styles.memolistItem}>
           <Text style={styles.memoTitle}>{item.body}</Text>
-          <Text style={styles.memoDate}>2017-12-12</Text>
+          <Text style={styles.memoDate}>{
+              moment(item.createdOn).tz('Asia/Tokyo').format('YYYY年MM月DD日')
+            }
+          </Text>
         </View>
       </TouchableHighlight>
     );
