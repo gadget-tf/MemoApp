@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native';
 import firebase from 'firebase';
 
 import CircleButton from '../elements/CircleButton';
@@ -42,6 +42,7 @@ class MemoEditScreen extends React.Component {
         <TextInput style={styles.memoEditInput}
           multiline
           textAlignVertical='top'
+          returnKeyType="done"
           value={this.state.body}
           onChangeText={(text) => {this.setState({body: text})}}
           underlineColorAndroid="transparent" />

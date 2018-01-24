@@ -41,6 +41,7 @@ class LoginScreen extends React.Component {
           underlineColorAndroid="transparent"
           autoCapitalize="none"
           autoCorrect={false}
+          returnKeyType="done"
           placeholder="Email Address" />
         <TextInput style={styles.input}
           value={this.state.password}
@@ -48,6 +49,7 @@ class LoginScreen extends React.Component {
           underlineColorAndroid="transparent"
           autoCapitalize="none"
           autoCorrect={false}
+          returnKeyType="done"
           placeholder="Password"
           secureTextEntry={true} />
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
